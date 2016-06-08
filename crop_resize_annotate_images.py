@@ -14,7 +14,8 @@ __doc__ = """
 crop_resize_annotate_images.py {version}
 
 Usage:
-  {filename} [-f] [-c <string>] [-r <num>] [-A | -a <string>] [-s <num>] [-v ...] <infile> <outfile>
+  {filename} [-f] [-c <string>] [-r <num>] [-A | -a <string>] [-s <num>]
+             [-v ...] <infile> <outfile>
   {filename} (-h | --help)
   {filename} --version
 
@@ -27,7 +28,7 @@ Options:
   -f --forceoverwrite     Overwrite output files.
   -h, --help              Show this screen.
   --version               Show version.
-  -v                      Print info (-vv for debug info (debug).
+  -v                      Print info (-vv for debug info (debug)).
 
 Examples:
   {filename} -c '256x512+32+64' -r 800 -a 'Titel' -s 16 <infile> <outfile>
@@ -80,8 +81,8 @@ if __name__ == '__main__':
 
             if args['-A']:
                 timestamp_patterns = [re.compile(r'\d{12}'),
-                                     re.compile(r'\d{8}_\d{4}'),
-                                     re.compile(r'\d{8}_\d{6}')]
+                                      re.compile(r'\d{8}_\d{4}'),
+                                      re.compile(r'\d{8}_\d{6}')]
                 timestamp_formats = ['%Y%m%d%H%M', '%Y%m%d_%H%M',
                                      '%Y%m%d_%H%M%S']
                 for timestamp_pattern, timestamp_format in \
@@ -89,8 +90,8 @@ if __name__ == '__main__':
                     match = timestamp_pattern.findall(args['<infile>'])
                     if match != []:
                         annotationstring = \
-                            datetime.datetime.strptime(match[0], \
-                                   timestamp_format).strftime('%Y-%m-%d %H:%M')
+                            datetime.datetime.strptime(match[0],
+                                timestamp_format).strftime('%Y-%m-%d %H:%M')
                         break
 
             elif args['-a']:
@@ -107,7 +108,7 @@ if __name__ == '__main__':
     log.debug(cmd)
 
     log.info('Running command in subprocess: %s' % cmd)
-    (out, err) = subprocess.Popen(cmd,stdout=subprocess.PIPE).communicate()
+    (out, err) = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
 
     log.debug('Processing time={0:.2f} s'.format(time.time() - start_time))
     log.debug('%s ended' % os.path.basename(__file__))
