@@ -79,30 +79,30 @@ if __name__ == '__main__':
         else:
             log.info('Overwriting file because -f, --forceoverwrite set.')
 
-            if args['-A']:
-                timestamp_patterns = [re.compile(r'\d{12}'),
-                                      re.compile(r'\d{8}_\d{4}'),
-                                      re.compile(r'\d{8}_\d{6}')]
-                timestamp_formats = ['%Y%m%d%H%M', '%Y%m%d_%H%M',
-                                     '%Y%m%d_%H%M%S']
-                for timestamp_pattern, timestamp_format in \
-                        zip(timestamp_patterns, timestamp_formats):
-                    match = timestamp_pattern.findall(args['<infile>'])
-                    if match != []:
-                        annotationstring = \
-                            datetime.datetime.strptime(match[0],
-                                timestamp_format).strftime('%Y-%m-%d %H:%M')
-                        break
+    if args['-A']:
+        timestamp_patterns = [re.compile(r'\d{12}'),
+                              re.compile(r'\d{8}_\d{4}'),
+                              re.compile(r'\d{8}_\d{6}')]
+        timestamp_formats = ['%Y%m%d%H%M', '%Y%m%d_%H%M',
+                             '%Y%m%d_%H%M%S']
+        for timestamp_pattern, timestamp_format in \
+                zip(timestamp_patterns, timestamp_formats):
+            match = timestamp_pattern.findall(args['<infile>'])
+            if match != []:
+                annotationstring = \
+                    datetime.datetime.strptime(match[0],
+                        timestamp_format).strftime('%Y-%m-%d %H:%M')
+                break
 
-            elif args['-a']:
-                annotationstring = args['-a']
+    elif args['-a']:
+        annotationstring = args['-a']
 
-            if args['-A'] or args['-a']:
-                cmd.extend("-background White".split())
-                cmd.append("-pointsize")
-                cmd.append(args['-s'])
-                cmd.append("label:" + annotationstring)
-                cmd.extend("+swap -gravity Center -append".split())
+    if args['-A'] or args['-a']:
+        cmd.extend("-background White".split())
+        cmd.append("-pointsize")
+        cmd.append(args['-s'])
+        cmd.append("label:" + annotationstring)
+        cmd.extend("+swap -gravity Center -append".split())
 
     cmd.append(args['<outfile>'])
     log.debug(cmd)
