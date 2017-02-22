@@ -107,7 +107,7 @@ if __name__ == '__main__':
     cmd.append(args['<outfile>'])
     log.debug(cmd)
 
-    log.info('Running command in subprocess: %s' % cmd)
+    log.info('Running command in subprocess: %s' % ' '.join(cmd))
     (out, err) = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()
 
     log.debug('Processing time={0:.2f} s'.format(time.time() - start_time))
