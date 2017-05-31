@@ -40,7 +40,7 @@ Options:
   -v                 Print info (-vv for debug info (debug)).
 
 Examples:
-  {filename}
+  {filename} -o out.gif -d5 -F100 -L100 -r -D -c32 -s2 img00*.png
 
 Copyright (C) 2017 Thomas Boevith
 
