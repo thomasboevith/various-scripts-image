@@ -43,7 +43,8 @@ Examples:
   {filename} -o out.gif -d5 -F100 -L100 -r -D -c32 -s2 img00*.png
 
 Dependencies:
-  gifsicle
+  Gifsicle (tested with Gifsicle 1.64)
+  ImageMagick (convert) (tested with ImageMagick 6.6.9-7)
 
 Copyright (C) 2017 Thomas Boevith
 
