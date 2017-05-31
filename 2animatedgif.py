@@ -42,6 +42,9 @@ Options:
 Examples:
   {filename} -o out.gif -d5 -F100 -L100 -r -D -c32 -s2 img00*.png
 
+Dependencies:
+  gifsicle
+
 Copyright (C) 2017 Thomas Boevith
 
 License: GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
