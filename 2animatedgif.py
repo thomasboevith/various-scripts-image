@@ -28,7 +28,7 @@ Options:
   -r                 Reverse at end of sequence.
   -c <num>           Reduce number of colors to num (2-256) [default: 256].
   -D                 Dither image after changing colormap.
-  -O <level>         Optimize GIF for space using level (1-3) [default: 1].
+  -O <level>         Optimize GIF for space using level (1-3) [default: 3].
                       1 Stores only changed portion of each image (default).
                       2 Also uses transparency to shrink the file further.
                       3 Try several methods (usually slower, sometimes better).
