@@ -100,7 +100,7 @@ if __name__ == '__main__':
 
     if os.path.isfile(args['-o']):
         if not args['-f']:
-            log.warning('Outfile already exists: %s.' % args['<outfile>'])
+            log.warning('Outfile already exists: %s.' % args['-o'])
             log.warning('Skipping. Use -f to overwrite')
             sys.exit(1)
         else:
