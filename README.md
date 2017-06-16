@@ -58,6 +58,7 @@ Scripts for all sorts of image-related purposes
 
     Examples:
       2animatedgif.py -o out.gif -d5 -F100 -L100 -r -D -c32 -s2 img00*.png
+      2animatedgif.py -o out.gif --convertargs '-scale 256 -alpha off' img00*.png
 
     Dependencies:
       Gifsicle (tested with Gifsicle 1.64)
