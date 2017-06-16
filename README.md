@@ -32,28 +32,29 @@ Scripts for all sorts of image-related purposes
 
     Usage:
       2animatedgif.py [-d <time>] [-F <time>] [-L <time>] [-c <num>] [-O <level>] [-l]
-                 [-D] [-r] [-s <num>] [-f] [-v ...] -o <outfile> <infiles> ...
+                 [-D] [-r] [-s <num>] [-f] [--convertargs <args>] [-v ...] -o <outfile> <infiles> ...
       2animatedgif.py (-h | --help)
       2animatedgif.py --version
 
     Options:
-      -d <time>          Set frame delay (in 1/100sec) [default: 50].
-      -F <time>          Set first frame delay (in 1/100sec).
-      -L <time>          Set last frame delay (in 1/100sec).
-      -l                 Do not loop.
-      -r                 Reverse at end of sequence.
-      -c <num>           Reduce number of colors to num (2-256) [default: 256].
-      -D                 Dither image after changing colormap.
-      -O <level>         Optimize GIF for space using level (1-3) [default: 1].
-                          1 Stores only changed portion of each image (default).
-                          2 Also uses transparency to shrink the file further.
-                          3 Try several methods (usually slower, sometimes better).
-      -s <num>           Use only every num frames.
-      -o <outfile>       Write animated GIF to outfile.
-      -f                 Overwrite output files.
-      -h, --help         Show this screen.
-      --version          Show version.
-      -v                 Print info (-vv for debug info (debug)).
+      -d <time>            Set frame delay (in 1/100sec) [default: 50].
+      -F <time>            Set first frame delay (in 1/100sec).
+      -L <time>            Set last frame delay (in 1/100sec).
+      -l                   Do not loop.
+      -r                   Reverse at end of sequence.
+      -c <num>             Reduce number of colors to num (2-256) [default: 256].
+      -D                   Dither image after changing colormap.
+      -O <level>           Optimize GIF for space using level (1-3) [default: 3].
+                            1 Stores only changed portion of each image (default).
+                            2 Also uses transparency to shrink the file further.
+                            3 Try several methods (usually slower, sometimes better).
+      -s <num>             Use only every num frames.
+      -o <outfile>         Write animated GIF to outfile.
+      --convertargs <args> Additional arguments to convert.
+      -f                   Overwrite output files.
+      -h, --help           Show this screen.
+      --version            Show version.
+      -v                   Print info (-vv for debug info (debug)).
 
     Examples:
       2animatedgif.py -o out.gif -d5 -F100 -L100 -r -D -c32 -s2 img00*.png
@@ -61,4 +62,3 @@ Scripts for all sorts of image-related purposes
     Dependencies:
       Gifsicle (tested with Gifsicle 1.64)
       ImageMagick (convert) (tested with ImageMagick 6.6.9-7)
-
