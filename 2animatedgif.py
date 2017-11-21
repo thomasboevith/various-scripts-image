@@ -43,6 +43,7 @@ Options:
 Examples:
   {filename} -o out.gif -d5 -F100 -L100 -r -D -c32 -s2 img00*.png
   {filename} -o out.gif --convertargs '-scale 256 -alpha off' img00*.png
+  {filename} -o out.gif --convertargs '-crop 1050x800+0+0 +repage' img00*.png
 
 Dependencies:
   Gifsicle (tested with Gifsicle 1.64)
@@ -136,15 +137,16 @@ if __name__ == '__main__':
         process_delays = subprocess.Popen(cmd_delays, stdout=subprocess.PIPE)
 
     if args['-O'] == '2' or args['-O'] == '3':
-        log.info('Optimizing: %s')
+        log.info('Optimizing: %s of size: %s K (%s)' %
+             (args['-o'], int(round(os.stat(args['-o']).st_size/1024.)), int(round(os.stat(args['-o']).st_size))))
         cmd_optimize = ['gifsicle']
         cmd_optimize.append('-O%s' % args['-O'])
         cmd_optimize.append('%s' % args['-o'])
         process_optimize = subprocess.Popen(cmd_optimize,
                                             stdout=subprocess.PIPE)
 
-    log.info('Final file %s of size: %s K' %
-             (args['-o'], int(round(os.stat(args['-o']).st_size/1024.))))
+    log.info('Final file: %s of size: %s K (%s)' %
+             (args['-o'], int(round(os.stat(args['-o']).st_size/1024.)), int(round(os.stat(args['-o']).st_size))))
 
     log.debug('Processing time={0:.2f} s'.format(time.time() - start_time))
     log.debug('%s ended' % os.path.basename(__file__))
